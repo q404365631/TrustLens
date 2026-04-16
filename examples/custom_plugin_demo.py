@@ -36,7 +36,7 @@ class NPVGapPlugin(BasePlugin):
 
     name = "npv_gap"
     description = "Computes NPV per class and reports the inter-class gap."
-    version = "0.1.0"
+    version = "0.1.2"
 
     def run(self, model, X, y_true, y_pred, y_prob, **kwargs):
 

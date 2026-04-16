@@ -10,7 +10,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Nothing yet — all current work is in v0.1.1.
+- Nothing yet — all current work is in v0.1.2.
+
+---
+
+## [0.1.2] — 2026-04-16
+
+### Fixed
+- Stabilized Matplotlib plotting backends for headless environments
+- Resolved NumPy division-by-zero warnings in histograms
+- Fixed trailing whitespace and end-of-file linting violations
+
+### Improved
+- Standardized `pyproject.toml` and documentation
+- Enhanced small-dataset reliability warnings
+- Robust CI/CD pipeline integration across Python versions
 
 ---
 
@@ -47,6 +61,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub Actions CI workflow (linting, testing, and formatting)
 - Complete documentation: README (with logo), CONTRIBUTING, ROADMAP, this CHANGELOG
 
-[Unreleased]: https://github.com/Khanz9664/TrustLens/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/Khanz9664/TrustLens/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/Khanz9664/TrustLens/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/Khanz9664/TrustLens/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/Khanz9664/TrustLens/releases/tag/v0.1.0

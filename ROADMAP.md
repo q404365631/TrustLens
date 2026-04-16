@@ -7,7 +7,7 @@
 
 ## Phase 1: MVP — *The Foundation*
 
-**Target: v0.1.0**
+**Target: v0.1.2**
 
 The minimal set of features required to be genuinely useful to practitioners.
 

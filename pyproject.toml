@@ -5,16 +5,26 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "trustlens"
 dynamic = ["version"]
-description = "Debug your ML models beyond accuracy."
-readme = "README.md"
+description = "Analyze machine learning model reliability beyond accuracy."
+readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.9"
-license = { text = "MIT" }
+license = "MIT"
 authors = [
-    { name = "Shahid Ul Islam", email = "maintainers@trustlens.dev" }
+    { name = "Shahid Ul Islam", email = "shahid9664@gmail.com" }
 ]
-keywords = ["machine learning", "model analysis", "calibration", "explainability", "fairness", "bias detection"]
+
+keywords = [
+    "machine learning",
+    "model evaluation",
+    "model reliability",
+    "calibration",
+    "explainability",
+    "fairness",
+    "bias detection"
+]
+
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
@@ -27,6 +37,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+
 dependencies = [
     "numpy>=1.23",
     "scikit-learn>=1.2",
@@ -70,7 +81,7 @@ docs = [
 exclude = ["tests*", "docs*", "examples*"]
 
 [tool.setuptools.dynamic]
-version = {attr = "trustlens.__version__"}
+version = { attr = "trustlens.__version__" }
 
 [tool.pytest.ini_options]
 minversion = "7.0"
@@ -114,19 +125,19 @@ exclude = [
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "UP", "B", "D"]
 ignore = [
-    "E501",  # Line length is handled by formatter
-    "B008",  # Do not perform function calls in argument defaults (fine for typer/fastapi)
-    "D100",  # Missing docstring in public module
-    "D104",  # Missing docstring in public package
-    "D203",  # 1 blank line required before class docstring (conflicts with D211)
-    "D212",  # Multi-line docstring summary should start at the first line
-    "D401",  # First line should be in imperative mood
-    "D105",  # Missing docstring in magic method
-    "N806",  # Variable in function should be lowercase (blocks const style vars 'BLUE')
-    "D205",  # 1 blank line required between summary line and description
-    "N803",  # Argument name should be lowercase (blocks standard 'X', 'Y', 'K' for matrices)
-    "N812",  # Lowercase imported as non-lowercase (blocks 'import torch.nn.functional as F')
-    "UP045", # Use `X | None` for type annotations (prefers Union/Optional for 3.9 compatibility)
+    "E501",
+    "B008",
+    "D100",
+    "D104",
+    "D203",
+    "D212",
+    "D401",
+    "D105",
+    "N806",
+    "D205",
+    "N803",
+    "N812",
+    "UP045",
 ]
 
 [tool.ruff.lint.per-file-ignores]

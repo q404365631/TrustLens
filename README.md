@@ -1,5 +1,18 @@
-<div align="center">
-<img src="assets/banner.png" width="180" alt="TrustLens Logo">
+<!-- PyPI description start -->
+
+TrustLens is a Python library for analyzing machine learning model reliability beyond accuracy, including calibration, bias, failure analysis, and explainability.
+
+Key capabilities:
+- Trust Score (0–100 reliability metric)
+- Calibration analysis (Brier Score, ECE)
+- Failure analysis (confidence gaps, misclassifications)
+- Bias detection (class imbalance, subgroup performance)
+- Representation analysis (embedding separability, CKA)
+
+```bash
+pip install trustlens
+```
+<!-- PyPI description end -->
 
 # TrustLens
 
@@ -11,7 +24,6 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/Khanz9664/TrustLens?style=social)](https://github.com/Khanz9664/TrustLens/stargazers)
 
-</div>
 
 ---
 
