@@ -128,18 +128,18 @@ class TestTrustReportInterface:
     def test_show_does_not_raise_and_covers_verbose(self, trained_binary_clf, capsys):
         clf, X, y, prob = trained_binary_clf
         report = analyze(clf, X, y, y_prob=prob, verbose=False)
-        
+
         # Test default mode
         report.show(verbose=False)
         captured = capsys.readouterr()
         assert "TrustLens Analysis Report" in captured.out
         assert "Conclusion:" in captured.out
-        
+
         # Test verbose mode to cover extra branching
         report.show(verbose=True)
         captured_verbose = capsys.readouterr()
         assert "Conclusion:" in captured_verbose.out
-        
+
         # Test show_failures to cover massive reporting branched logic
         report.show_failures()
         captured_failures = capsys.readouterr()
