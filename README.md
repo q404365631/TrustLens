@@ -42,7 +42,7 @@ Try TrustLens instantly without bringing your own data or models. We provide a z
 ```python
 from trustlens import quick_analyze
 
-# Automatically loads the breast cancer dataset, trains a baseline logic model, 
+# Automatically loads the breast cancer dataset, trains a baseline logic model,
 # and runs the full analysis, returning a TrustReport and rendering the dashboard.
 report = quick_analyze(dataset="breast_cancer")
 ```

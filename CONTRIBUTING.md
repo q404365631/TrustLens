@@ -1,9 +1,9 @@
 # Contributing to TrustLens
 
-Thank you for your interest in TrustLens!  
+Thank you for your interest in TrustLens!
 We welcome contributions from researchers, engineers, and data scientists of all skill levels.
 
-> **First time contributing to open source?** 
+> **First time contributing to open source?**
 > Check out [How to Contribute to Open Source](https://opensource.guide/how-to-contribute/) — we're beginner-friendly!
 
 ---
@@ -301,5 +301,5 @@ We aim to respond within 48 hours. ⏱
 
 ---
 
-Thanks again for contributing to TrustLens. 
-You're helping make ML systems more honest, one metric at a time. 
+Thanks again for contributing to TrustLens.
+You're helping make ML systems more honest, one metric at a time.

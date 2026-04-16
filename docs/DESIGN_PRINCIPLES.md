@@ -1,6 +1,6 @@
 # TrustLens Design Principles
 
-> These principles guide every technical decision in TrustLens. 
+> These principles guide every technical decision in TrustLens.
 > New contributors should read this before writing any code.
 
 ---
@@ -17,7 +17,7 @@ TrustLens competes with the user's time. If the API is confusing, they will writ
 - Errors must be actionable: "y_prob is required when model does not expose predict_proba()" not "ValueError: array mismatch."
 - We prefer explicit over implicit — pass arrays in, get numbers out.
 
-**What this rules out:** 
+**What this rules out:**
 Overengineered abstractions, "framework" patterns that require users to learn TrustLens-specific concepts before getting results.
 
 ---

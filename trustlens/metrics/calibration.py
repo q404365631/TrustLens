@@ -218,9 +218,15 @@ def reliability_curve(
         # Find which bin this mean_pred belongs to
         idx = np.searchsorted(bin_edges[1:], mp, side="right")
         b_idx = int(min(int(idx), len(bin_counts) - 1))
-        bin_counts[i] = int(np.sum(
-            (np.asarray(y_prob) >= bin_edges[b_idx])
-            & (np.asarray(y_prob) < bin_edges[b_idx + 1] if b_idx + 1 < len(bin_edges) else True)
-        ))
+        bin_counts[i] = int(
+            np.sum(
+                (np.asarray(y_prob) >= bin_edges[b_idx])
+                & (
+                    np.asarray(y_prob) < bin_edges[b_idx + 1]
+                    if b_idx + 1 < len(bin_edges)
+                    else True
+                )
+            )
+        )
 
     return frac_pos, mean_pred, bin_counts

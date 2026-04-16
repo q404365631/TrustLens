@@ -106,6 +106,7 @@ class GradCAM:
         """
         self.model.eval()
         import torch
+
         if not isinstance(image_tensor, torch.Tensor):
             image_tensor = torch.from_numpy(image_tensor)
         image_tensor = image_tensor.requires_grad_(False)
@@ -122,8 +123,12 @@ class GradCAM:
         score.backward()
 
         # Pool gradients across spatial dimensions → channel weights
-        if not isinstance(self._gradients, torch.Tensor) or not isinstance(self._activations, torch.Tensor):
-            raise RuntimeError("Gradients or activations not captured. Ensure hooks are registered correctly.")
+        if not isinstance(self._gradients, torch.Tensor) or not isinstance(
+            self._activations, torch.Tensor
+        ):
+            raise RuntimeError(
+                "Gradients or activations not captured. Ensure hooks are registered correctly."
+            )
         gradients = self._gradients  # (1, C, H', W')
         activations = self._activations  # (1, C, H', W')
 

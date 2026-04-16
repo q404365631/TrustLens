@@ -1,11 +1,11 @@
 # TrustLens Roadmap
 
-> Last updated: April 2026 
+> Last updated: April 2026
 > This roadmap reflects our current priorities. Community feedback shapes every phase.
 
 ---
 
-## Phase 1: MVP — *The Foundation* 
+## Phase 1: MVP — *The Foundation*
 
 **Target: v0.1.0**
 
@@ -143,5 +143,5 @@ TrustLens as a complete model analysis platform.
 
 ## Feedback
 
-Have thoughts on the roadmap? 
+Have thoughts on the roadmap?
 [Open a discussion on GitHub](https://github.com/Khanz9664/TrustLens/discussions) — we read everything.

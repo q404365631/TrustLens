@@ -179,7 +179,7 @@ class TrustReport:
                 if key.startswith("__") and key.endswith("__"):
                     continue
                 display_key = key.replace("_", " ").title()
-                
+
                 if isinstance(value, dict):
                     if verbose:
                         print(f"{prefix}- {display_key}:")

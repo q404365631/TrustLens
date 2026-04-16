@@ -132,7 +132,7 @@ We built a tool that gives ML models a "Trust Score" from 0-100.
 92% accuracy? Great.
 Trust Score 41/100? Ship nothing.
 
-Here's what we found: 
+Here's what we found:
 
 Tweet 2/5:
 Accuracy measures how often you're right.

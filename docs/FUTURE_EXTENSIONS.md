@@ -1,6 +1,6 @@
 # TrustLens — Future Extensions
 
-> A forward-looking document for where TrustLens could go. 
+> A forward-looking document for where TrustLens could go.
 > These are not commitments — they are possibilities.
 
 ---
@@ -14,8 +14,8 @@ A zero-dependency web dashboard (FastAPI backend + HTMX frontend) allows:
 - Side-by-side model comparison
 - Drill-down from report overview → per-class failure analysis → individual sample explanation
 
-**Why it matters:** 
-Non-technical stakeholders (product managers, regulators) need to see model trust metrics without writing Python. 
+**Why it matters:**
+Non-technical stakeholders (product managers, regulators) need to see model trust metrics without writing Python.
 A dashboard brings TrustLens into stakeholder review meetings.
 
 **Technical approach:**
@@ -30,7 +30,7 @@ A dashboard brings TrustLens into stakeholder review meetings.
 
 **Concept:** A community benchmark platform at `trustlens.dev/leaderboard`.
 
-Users submit `report.json` outputs for standard datasets (CIFAR-10, ImageNet, GLUE, etc.). 
+Users submit `report.json` outputs for standard datasets (CIFAR-10, ImageNet, GLUE, etc.).
 The leaderboard ranks models not by accuracy — but by calibration, fairness, and explainability faithfulness.
 
 **Columns:**
@@ -41,7 +41,7 @@ ViT-B/16 (DINO)   0.021  0.039  0.84    0.62    0.07
 ...
 ```
 
-**Why it matters:** 
+**Why it matters:**
 The community currently optimizes for accuracy. A TrustLens leaderboard creates social incentives for calibration, fairness, and faithfulness. It makes "better trust" measurable and comparable.
 
 ---
@@ -84,8 +84,8 @@ Runs the full TrustLens analysis pipeline on a standard dataset + pretrained mod
 - Adult Income (tabular, fairness)
 - Stanford Sentiment Treebank (text, sentiment)
 
-**Why it matters:** 
-Researchers need baselines to claim "our calibration method improves ECE by X on CIFAR-10." 
+**Why it matters:**
+Researchers need baselines to claim "our calibration method improves ECE by X on CIFAR-10."
 TrustLens benchmarks provide those standardized baselines.
 
 ---
@@ -150,5 +150,5 @@ Runs calibration analysis and prints contextual explanations:
 - "Your reliability diagram shows overconfidence at high confidence — common in models trained with cross-entropy loss without temperature scaling."
 - "To fix this, try: TemperatureScaler from trustlens.calibrators"
 
-**Why it matters:** 
+**Why it matters:**
 Lowers the educational barrier. Users learn why trust matters while using the tool.
