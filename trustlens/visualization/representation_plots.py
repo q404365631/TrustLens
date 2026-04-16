@@ -122,7 +122,8 @@ def plot_embedding_separability(
         fig.savefig(save_path, dpi=150, bbox_inches="tight")
 
     if show:
-        plt.show()
+        if "agg" not in plt.get_backend().lower():
+            plt.show()
 
     plt.close(fig)
     return fig

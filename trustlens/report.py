@@ -242,7 +242,8 @@ class TrustReport:
             try:
                 import matplotlib.pyplot as plt
 
-                plt.show()
+                if "agg" not in plt.get_backend().lower():
+                    plt.show()
             except Exception:
                 pass
 
