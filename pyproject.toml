@@ -1,0 +1,145 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trustlens"
+dynamic = ["version"]
+description = "Debug your ML models beyond accuracy."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Shahid Ul Islam", email = "maintainers@trustlens.dev" }
+]
+keywords = ["machine learning", "model analysis", "calibration", "explainability", "fairness", "bias detection"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "numpy>=1.23",
+    "scikit-learn>=1.2",
+    "matplotlib>=3.6",
+    "scipy>=1.9",
+]
+
+[project.urls]
+Homepage = "https://github.com/Khanz9664/TrustLens"
+Source = "https://github.com/Khanz9664/TrustLens"
+Portfolio = "https://khanz9664.github.io/portfolio/"
+LinkedIn = "https://www.linkedin.com/in/shahid-ul-islam-13650998/"
+Instagram = "https://instagram.com/shaddy9664"
+
+[project.optional-dependencies]
+torch = [
+    "torch>=2.0",
+    "torchvision>=0.15",
+]
+full = [
+    "torch>=2.0",
+    "torchvision>=0.15",
+    "shap>=0.42",
+    "captum>=0.6",
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.4",
+    "mypy>=1.0",
+    "pre-commit>=3.0",
+]
+docs = [
+    "sphinx>=6.0",
+    "sphinx-rtd-theme>=1.2",
+    "myst-parser>=2.0",
+    "nbsphinx>=0.9",
+]
+
+[tool.setuptools.packages.find]
+exclude = ["tests*", "docs*", "examples*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "trustlens.__version__"}
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+addopts = [
+    "-v",
+    "--tb=short",
+    "--strict-markers",
+    "--color=yes",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks integration tests",
+]
+
+[tool.coverage.run]
+source = ["trustlens"]
+omit = [
+    "trustlens/__init__.py",
+    "tests/*",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+exclude = [
+    ".git",
+    ".venv",
+    ".pytest_cache",
+    ".ruff_cache",
+    "__pycache__",
+    "build",
+    "dist",
+    "*.ipynb",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "D"]
+ignore = [
+    "E501",  # Line length is handled by formatter
+    "B008",  # Do not perform function calls in argument defaults (fine for typer/fastapi)
+    "D100",  # Missing docstring in public module
+    "D104",  # Missing docstring in public package
+    "D203",  # 1 blank line required before class docstring (conflicts with D211)
+    "D212",  # Multi-line docstring summary should start at the first line
+    "D401",  # First line should be in imperative mood
+    "D105",  # Missing docstring in magic method
+    "N806",  # Variable in function should be lowercase (blocks const style vars 'BLUE')
+    "D205",  # 1 blank line required between summary line and description
+    "N803",  # Argument name should be lowercase (blocks standard 'X', 'Y', 'K' for matrices)
+    "N812",  # Lowercase imported as non-lowercase (blocks 'import torch.nn.functional as F')
+    "UP045", # Use `X | None` for type annotations (prefers Union/Optional for 3.9 compatibility)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D"]
+"examples/*" = ["D", "E402", "INP001", "N"]
+"*.py" = ["D"]
+"trustlens/*" = []
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
