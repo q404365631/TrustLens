@@ -10,7 +10,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Nothing yet — all current work is in v0.1.0.
+- Nothing yet — all current work is in v0.1.1.
+
+---
+
+## [0.1.1] — 2026-04-16
+
+### Fixed
+- Resolved NumPy runtime warnings in histogram normalization
+- Fixed Matplotlib non-interactive backend warning (`FigureCanvasAgg` warning suppressed via backend-aware `plt.show()` guard)
+- Improved plotting stability with controlled rendering and `plt.close()` cleanup
+
+### Improved
+- Cleaner console output in headless and CI environments
+- Small dataset warning added for `n < 30` samples
+- `show: bool = True` parameter added to all visualization functions for optional interactive display
 
 ---
 
@@ -33,5 +47,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub Actions CI workflow (linting, testing, and formatting)
 - Complete documentation: README (with logo), CONTRIBUTING, ROADMAP, this CHANGELOG
 
-[Unreleased]: https://github.com/Khanz9664/TrustLens/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/Khanz9664/TrustLens/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/Khanz9664/TrustLens/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/Khanz9664/TrustLens/releases/tag/v0.1.0
