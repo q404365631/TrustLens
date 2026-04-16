@@ -1,5 +1,5 @@
 <div align="center">
-<img src="docs/logo.png" width="180" alt="TrustLens Logo">
+<img src="assets/banner.png" width="180" alt="TrustLens Logo">
 
 # TrustLens
 
@@ -7,10 +7,7 @@
 
 **TrustLens is the open-source library that answers the questions accuracy never does.**
 
-[![PyPI](https://badge.fury.io/py/trustlens.svg)](https://pypi.org/project/trustlens)
 [![CI](https://github.com/Khanz9664/TrustLens/actions/workflows/ci.yml/badge.svg)](https://github.com/Khanz9664/TrustLens/actions)
-[![Docs](https://readthedocs.org/projects/trustlens/badge/?version=latest)](https://trustlens.readthedocs.io)
-[![Coverage](https://codecov.io/gh/Khanz9664/TrustLens/branch/main/graph/badge.svg)](https://codecov.io/gh/Khanz9664/TrustLens)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/Khanz9664/TrustLens?style=social)](https://github.com/Khanz9664/TrustLens/stargazers)
 
