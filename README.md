@@ -8,7 +8,7 @@
 
 ### Your model has 92% accuracy. **That's not enough.**
 
-**The open-source Python library that answers the questions accuracy never does.**  
+**The open-source Python library that answers the questions accuracy never does.**
 Calibration · Failure Analysis · Bias Detection · Explainability — in one function call.
 
 <br/>
@@ -39,7 +39,7 @@ Three months later:
 
 Sound familiar? You're not alone.
 
-**Accuracy tells you how often your model is right.  
+**Accuracy tells you how often your model is right.
 It tells you nothing about *when* it fails, *why* it fails, or *who* it fails.**
 
 TrustLens fixes that.
@@ -109,7 +109,7 @@ TrustLens Analysis Report
   representation   68.5 / 100
 ```
 
-Your calibration is fine. Your bias score is not.  
+Your calibration is fine. Your bias score is not.
 ---
 
 **TrustLens just saved you from a PR disaster.**
@@ -194,16 +194,16 @@ High-confidence wrong predictions are the **most dangerous kind.** Now you know 
 
 ## Real-World Use Cases
 
-**Medical AI**  
+**Medical AI**
 A diagnostic model with 94% accuracy has an ECE of 0.18 — dangerously overconfident on edge cases. TrustLens surfaces it before it reaches a patient.
 
-**Fraud Detection**  
+**Fraud Detection**
 Your confidence gap is 0.04 — the model is nearly as confident on fraud it misses as fraud it catches. That's your false-negative problem, quantified.
 
-**Hiring, Lending & Insurance**  
+**Hiring, Lending & Insurance**
 Subgroup analysis reveals a 23% accuracy gap between applicant demographics. You have a fairness problem. You know before a regulator tells you.
 
-**ML Research**  
+**ML Research**
 Use CKA to compare representation quality across architectures. Use faithfulness testing to benchmark explanation methods honestly.
 
 ---
@@ -292,7 +292,7 @@ Open to contributors of all levels. Check the Issues tab for open tasks ready to
 
 ## Roadmap
 
-See [`ROADMAP.md`](ROADMAP.md) for what's coming next.  
+See [`ROADMAP.md`](ROADMAP.md) for what's coming next.
 Have a feature request? [Open a discussion →](https://github.com/Khanz9664/TrustLens/discussions)
 
 ---
@@ -322,7 +322,7 @@ If you use TrustLens in research or production, please cite it:
 
 <div align="center">
 
-**If TrustLens saved you from a bad deployment, give it a ⭐**  
+**If TrustLens saved you from a bad deployment, give it a ⭐**
 It helps other engineers find it before they make the same mistake.
 
 [PyPI](https://pypi.org/project/trustlens) · [GitHub](https://github.com/Khanz9664/TrustLens) · [Discussions](https://github.com/Khanz9664/TrustLens/discussions)
