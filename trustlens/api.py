@@ -1,6 +1,6 @@
 """
 trustlens.api.
-=============
+==============
 Primary entry point for the TrustLens analysis pipeline.
 
 Usage

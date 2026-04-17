@@ -1,14 +1,14 @@
 """
 trustlens.metrics.failure.
-=========================
+==========================
 Failure-mode analysis: where and how does a model fail?
 
 Metrics implemented
 -------------------
 * ``misclassification_summary`` — per-class error rates and high-confidence
- mistakes.
+  mistakes.
 * ``confidence_gap``      — distribution of confidence for correct vs.
- incorrect predictions.
+  incorrect predictions.
 """
 
 from __future__ import annotations

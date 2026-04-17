@@ -12,15 +12,15 @@ Metrics implemented
 -------------------
 * ``embedding_separability``  — silhouette score + within/between class distance
 * ``centered_kernel_alignment`` — measures representational similarity between
-                 two sets of embeddings (e.g., two layers)
+  two sets of embeddings (e.g., two layers)
 
 References
 ----------
 * Kornblith, S., et al. (2019). Similarity of Neural Network Representations
- Revisited. ICML.
+  Revisited. ICML.
 * Rousseeuw, P. (1987). Silhouettes: A graphical aid to the interpretation
- and validation of cluster analysis. Journal of Computational and Applied
- Mathematics.
+  and validation of cluster analysis. Journal of Computational and Applied
+  Mathematics.
 """
 
 from __future__ import annotations

@@ -46,6 +46,7 @@ MANIFEST
 
 # Documentation
 docs/_build/
+docs/_static/
 docs/api/
 
 # Project-specific outputs

@@ -16,9 +16,9 @@ Metrics implemented
 References
 ----------
 * Brier, G. W. (1950). Verification of forecasts expressed in terms of
- probability. Monthly Weather Review, 78(1), 1–3.
+  probability. Monthly Weather Review, 78(1), 1–3.
 * Niculescu-Mizil, A., & Caruana, R. (2005). Predicting good probabilities
- with supervised learning. ICML.
+  with supervised learning. ICML.
 * Guo, C., et al. (2017). On calibration of modern neural networks. ICML.
 """
 

@@ -1,6 +1,6 @@
 """
 trustlens.report.
-================
+=================
 TrustReport — the central result container returned by ``analyze()``.
 
 Responsibilities
