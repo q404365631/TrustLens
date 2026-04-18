@@ -1,8 +1,12 @@
 <div align="center">
 
-<img src="assets/banner.png" alt="TrustLens Banner" width="100%" />
+  <img src="assets/banner1.png" alt="TrustLens Banner" width="100%" />
 
 <br/>
+
+
+⭐ If you find this useful, consider starring the repo  
+🛠 Open issues available for contributors
 
 # TrustLens
 
@@ -13,7 +17,7 @@ Calibration · Failure Analysis · Bias Detection · Explainability — in one f
 
 <br/>
 
-[![PyPI version](https://badge.fury.io/py/trustlens.svg)](https://pypi.org/project/trustlens)
+[![PyPI version](https://badge.fury.io/py/trustlens.svg)](https://pypi.org/project/trustlens/)
 [![CI](https://github.com/Khanz9664/TrustLens/actions/workflows/ci.yml/badge.svg)](https://github.com/Khanz9664/TrustLens/actions)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/Khanz9664/TrustLens?style=social)](https://github.com/Khanz9664/TrustLens/stargazers)
@@ -297,7 +301,13 @@ TrustLens is built to production-grade standards — not a research prototype:
 
 ## Contributing
 
-Open to contributors of all levels. Check the Issues tab for open tasks ready to be built.
+Interested in contributing?
+
+We have beginner-friendly and intermediate issues open.
+
+👉 Check issues: https://github.com/Khanz9664/TrustLens/issues
+
+Happy to guide first-time contributors 🚀
 
 > **Coverage policy:** All new contributions must maintain or improve the 67% baseline. Advanced modules (explainability, visualization) are the priority areas for new tests.
 
