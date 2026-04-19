@@ -165,6 +165,36 @@ Implement `trustlens.integrations.wandb.log_trust_report(report)`:
 
 ---
 
+### Issue #25: Add `equalized_odds` metric to bias module — the fairness gold standard
+**Label:** `enhancement`, `fairness`
+**Description:**
+Subgroup accuracy gap tells you *if* one group is worse off. Equalized Odds tells you *how* they're worse off — through predictive bias in TPR or FPR.
+
+**Task:**
+Add `equalized_odds(y_true, y_pred, sensitive_features) → dict` to `trustlens/metrics/bias.py`.
+- Compute per-group TPR and FPR.
+- Calculate the maximum disparity (gap) between groups.
+- Label the violation as "severe" (>0.15), "moderate" (0.05-0.15), or "acceptable" (<0.05).
+
+**Difficulty:** Intermediate
+
+---
+
+### Issue #51: Add a powerful CLI entry point: `trustlens analyze`
+**Label:** `enhancement`, `ux`
+**Description:**
+Empower users to perform high-fidelity model audits directly from the terminal without writing a single line of Python.
+
+**Task:**
+Implement `trustlens analyze` with support for built-in datasets and local files.
+- Command: `trustlens analyze --dataset breast_cancer`
+- Command: `trustlens analyze --data path/to/data.csv --model path/to/model.pkl`
+- Use `typer` for the CLI framework and register it as a console script.
+
+**Difficulty:** Intermediate
+
+---
+
 ## Beginner Issues (1–15)
 
 ---
@@ -404,15 +434,8 @@ When `TrustReport` is returned in a Jupyter notebook cell, display a rich HTML c
 
 ---
 
-### Issue #25
-**Title:** Add `equalized_odds` metric to bias module
-**Label:** `enhancement`, `fairness`
-**Description:**
-Equalized Odds requires equal TPR and FPR across demographic groups.
-Add `equalized_odds(y_true, y_pred, sensitive_features)` returning per-group TPR/FPR and the maximum disparity.
-
-**Reference:** Hardt et al. (2016), Equality of Opportunity in Supervised Learning.
-**Difficulty:** Intermediate
+### Issue #25 [PUBLISHED]
+*This issue has been moved to the active GitHub tracker.*
 
 ---
 
@@ -731,3 +754,5 @@ Design a public leaderboard at `trustlens.dev/leaderboard` that:
 
 Backend: FastAPI + SQLite (initial). Frontend: HTMX or minimal React.
 **Difficulty:** Advanced
+### Issue #51 [PUBLISHED]
+*This issue has been moved to the active GitHub tracker.*

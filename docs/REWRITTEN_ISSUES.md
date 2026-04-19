@@ -86,6 +86,20 @@
 
 ---
 
+### Issue #25: Add Equalized Odds — catch systematic discrimination beyond accuracy
+**Problem:** A model can have equal accuracy across groups but a 30% gap in True Positive Rate. This systematic discrimination is invisible to accuracy-based metrics.
+**Your task:** Add `equalized_odds(y_true, y_pred, sensitive_features) → dict` to `trustlens/metrics/bias.py`.
+**Difficulty:** Intermediate
+
+---
+
+### Issue #51: Add a powerful CLI entry point: `trustlens analyze` — the terminal-first UX
+**Problem:** Currently, auditing a model requires writing a Python script. This adds friction for quick benchmarks and CI/CD integration.
+**Your task:** Implement a CLI using `typer` that allows running `trustlens analyze` on both built-in datasets and local files.
+**Difficulty:** Intermediate
+
+---
+
 ## Issue #1 [PUBLISHED]
 *This issue has been moved to the active GitHub tracker.*
 
@@ -206,42 +220,8 @@ ece = expected_calibration_error(y_true, y_prob_multiclass)
 
 ---
 
-## Issue #25 (Intermediate) — Fairness Research
-
-### Add Equalized Odds — the fairness metric that catches systematic discrimination
-
-**Problem:**
-Subgroup accuracy gap tells you *if* one group is worse off.
-Equalized Odds tells you *how* they're worse off — through predictive bias in True Positive Rate or False Positive Rate.
-
-A model can have equal accuracy but a TPR gap of 30% between groups. That's systematic discrimination, invisible to accuracy-based metrics.
-
-**Your task:** Add `equalized_odds(y_true, y_pred, sensitive_features) → dict` to `trustlens/metrics/bias.py`.
-
-**Expected output:**
-```python
-result = equalized_odds(y_true, y_pred, {"gender": gender_arr})
-# {
-#  "gender": {
-#   "M": {"tpr": 0.88, "fpr": 0.12},
-#   "F": {"tpr": 0.61, "fpr": 0.08},
-#   "__summary__": {
-#    "tpr_gap": 0.27,
-#    "fpr_gap": 0.04,
-#    "violation": "severe"  # tpr_gap > 0.15
-#   }
-#  }
-# }
-```
-
-**Violation thresholds to implement:**
-- `> 0.15` → "severe"
-- `0.05–0.15` → "moderate"
-- `< 0.05` → "acceptable"
-
-**Reference:** Hardt, Price, Srebo (2016), *Equality of Opportunity in Supervised Learning*. NeurIPS.
-
-**Difficulty:** Intermediate · Est. time: 4–5 hours
+## Issue #25 [PUBLISHED]
+*This issue has been moved to the active GitHub tracker.*
 
 ---
 
@@ -333,3 +313,8 @@ console_scripts =
 **Why it matters:** This is the feature that takes TrustLens from "dev tool" to "team tool." It gets TrustLens into weekly model review meetings. It's the path to 1000+ stars.
 
 **Difficulty:** Advanced · Est. time: 1–2 weeks
+
+---
+
+## Issue #51 [PUBLISHED]
+*This issue has been moved to the active GitHub tracker.*
