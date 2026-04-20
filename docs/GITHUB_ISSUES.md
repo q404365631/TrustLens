@@ -195,6 +195,17 @@ Implement `trustlens analyze` with support for built-in datasets and local files
 
 ---
 
+### Issue #5
+**Title:** Improve docstring for `analyze()` with a full code example
+**Label:** `good first issue`, `docs`
+**Description:**
+The `analyze()` docstring has a brief example.
+Expand the `Examples` section with a 10-line runnable code snippet using `make_classification`.
+
+**Difficulty:** Beginner
+
+---
+
 ## Beginner Issues (1–15)
 
 ---
@@ -226,14 +237,8 @@ Add `tests/test_version.py` that asserts:
 
 ---
 
-### Issue #5
-**Title:** Improve docstring for `analyze()` with a full code example
-**Label:** `good first issue`, `docs`
-**Description:**
-The `analyze()` docstring has a brief example.
-Expand the `Examples` section with a 10-line runnable code snippet using `make_classification`.
-
-**Difficulty:** Beginner
+### Issue #5 [PUBLISHED]
+*This issue has been moved to the active GitHub tracker.*
 
 ---
 
