@@ -159,33 +159,24 @@ def analyze(
     >>> from sklearn.model_selection import train_test_split
     >>> from trustlens import analyze
     >>>
-    >>> # Create synthetic dataset
-    >>> X, y = make_classification(n_samples=500, n_features=10, 
-    ...                           n_classes=2, random_state=42)
+    >>> # Create dataset
+    >>> X, y = make_classification(n_samples=500, n_features=10, random_state=42)
     >>>
     >>> # Train/test split
-    >>> X_train, X_test, y_train, y_test = train_test_split(
-    ...     X, y, test_size=0.3, random_state=42)
+    >>> X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
     >>>
     >>> # Train model
-    >>> clf = RandomForestClassifier(n_estimators=50, random_state=42)
-    >>> clf.fit(X_train, y_train)
+    >>> model = RandomForestClassifier()
+    >>> model.fit(X_train, y_train)
     >>>
-    >>> # Get predicted probabilities
-    >>> y_prob = clf.predict_proba(X_test)
+    >>> # Predict probabilities
+    >>> y_prob = model.predict_proba(X_test)
     >>>
-    >>> # Run TrustLens analysis
-    >>> report = analyze(clf, X_test, y_test, y_prob=y_prob)
+    >>> # Run analysis
+    >>> report = analyze(model, X_test, y_test, y_prob)
     >>>
-    >>> # Display results interactively
+    >>> # Show results
     >>> report.show()
-    >>>
-    >>> # Save analysis to disk
-    >>> report.save("trust_analysis/")
-    >>>
-    >>> # Access specific metrics programmatically
-    >>> print(f\"Overall accuracy: {report.failure.overall_accuracy:.3f}\")
-    >>> print(f\"Calibration error: {report.calibration.ece:.3f}\")
     """
     _log = logger.info if verbose else logger.debug
 
