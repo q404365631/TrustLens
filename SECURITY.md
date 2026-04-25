@@ -4,10 +4,10 @@
 
 Currently, the latest version of TrustLens is actively supported.
 
-| Version | Supported          |
+| Version | Supported |
 | ------- | ------------------ |
-| 0.2.x   | ✅ Yes              |
-| < 0.2.0 | ❌ No               |
+| 0.2.x | ✅ Yes |
+| < 0.2.0 | ❌ No |
 
 ---
 
@@ -17,29 +17,21 @@ If you discover a security vulnerability, please **do not open a public issue**.
 
 Instead, report it responsibly by:
 
-- Opening a private GitHub security advisory (if enabled), or  
-- Contacting the maintainer directly via email: [security@trustlens.org](mailto:security@trustlens.org)
+- Opening a private GitHub security advisory (if enabled), or 
+- Contacting the maintainer directly via email.
 
 Please include:
-- description of the issue  
-- steps to reproduce  
-- potential impact  
+- A detailed description of the issue 
+- Steps to reproduce the vulnerability
+- Potential impact and severity
 
 ---
 
 ## Response Process
 
 We aim to:
-- acknowledge reports within **48 hours**
-- investigate and validate issues quickly  
-- release fixes in a timely manner  
+- Acknowledge reports within **48 hours**
+- Investigate and validate issues quickly 
+- Release fixes in a timely manner 
 
-Responsible disclosure is appreciated 🫶
-
----
-
-## Security Updates
-
-Security updates will be released as soon as possible and will be clearly marked in the CHANGELOG.md with the `[SECURITY]` tag.
-
-For critical vulnerabilities, we may release emergency patches outside of the regular release cycle.
+Responsible disclosure is highly appreciated.
