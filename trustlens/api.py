@@ -152,10 +152,40 @@ def analyze(
 
     Examples
     --------
+    A complete, runnable example demonstrating end-to-end usage:
+
+    >>> from sklearn.datasets import make_classification
+    >>> from sklearn.ensemble import RandomForestClassifier
+    >>> from sklearn.model_selection import train_test_split
     >>> from trustlens import analyze
-    >>> report = analyze(clf, X_val, y_val, y_prob=proba)
-    >>> report.show()         # interactive view
-    >>> report.save("trust_report/") # persist to disk
+    >>>
+    >>> # Create synthetic dataset
+    >>> X, y = make_classification(n_samples=500, n_features=10, 
+    ...                           n_classes=2, random_state=42)
+    >>>
+    >>> # Train/test split
+    >>> X_train, X_test, y_train, y_test = train_test_split(
+    ...     X, y, test_size=0.3, random_state=42)
+    >>>
+    >>> # Train model
+    >>> clf = RandomForestClassifier(n_estimators=50, random_state=42)
+    >>> clf.fit(X_train, y_train)
+    >>>
+    >>> # Get predicted probabilities
+    >>> y_prob = clf.predict_proba(X_test)
+    >>>
+    >>> # Run TrustLens analysis
+    >>> report = analyze(clf, X_test, y_test, y_prob=y_prob)
+    >>>
+    >>> # Display results interactively
+    >>> report.show()
+    >>>
+    >>> # Save analysis to disk
+    >>> report.save("trust_analysis/")
+    >>>
+    >>> # Access specific metrics programmatically
+    >>> print(f\"Overall accuracy: {report.failure.overall_accuracy:.3f}\")
+    >>> print(f\"Calibration error: {report.calibration.ece:.3f}\")
     """
     _log = logger.info if verbose else logger.debug
 
@@ -170,7 +200,11 @@ def analyze(
             _log("Calling model.predict_proba() …")
             y_prob = model.predict_proba(X)
         else:
-            raise ValueError("y_prob is required when model does not expose predict_proba().")
+            raise ValueError(
+                "y_prob is required when model does not expose predict_proba(). "
+                "Make sure your model has a predict_proba() method that returns "
+                "probabilities with shape (n_samples, n_classes)."
+            )
 
     y_pred = model.predict(X)
 
