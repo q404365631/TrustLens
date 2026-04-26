@@ -15,6 +15,7 @@ Core capabilities include:
 __version__ = "0.2.0"
 
 from .api import analyze, quick_analyze
+from .comparison import compare
 from .report import TrustReport
 from .trust_score import TrustScoreResult, compute_trust_score
 
@@ -25,4 +26,5 @@ __all__ = [
     "compute_trust_score",
     "TrustScoreResult",
     "__version__",
+    "compare",
 ]

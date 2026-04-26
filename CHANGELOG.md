@@ -9,6 +9,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Model comparison API (`trustlens.compare`) for head-to-head multi-model evaluation and recommendation.
+- Pattern detection system (e.g., "Calibration Drift", "Confidently Wrong") to surface high-level semantic risks.
+- Initial `equalized_odds()` fairness metric with per-group TPR/FPR analysis (closes #17). Thanks @komoike-oss28-ui
+- Ranked score explanation layer to justify Trust Score deductions.
+
+### Improved
+- Final Trust Score logic now includes a base score, penalty breakdown, and decisive deployment verdicts.
+- Standardized canonical terminology to "confidence-weighted errors".
+- Enhanced failure diagnostics with confidence concentration insights (range analysis).
+- Bias reporting now includes explicit margin calculations relative to the 0.10 threshold.
+- Comparison engine includes causal reasoning (e.g., linking selection to lower penalty burdens).
+- Integrated fairness metrics into the main `analyze()` pipeline with safe fallback handling and margin reporting.
+
+
+### Stability
+- Maintained full backward compatibility with the `analyze()` API.
+- All 33 core tests passing.
+
+
 ---
 
 ## [0.2.0] — 2026-04-24
@@ -24,6 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `report.save()` now supports direct export to single `.json` and `.txt` files.
 - Human-readable text report generation without ANSI colors.
 - `docs/EXPERIMENTAL.md` — contributor-facing guide for experimental module governance.
+
 
 ### Improved
 - Enhanced `utils.py` with robust input validation and NumPy-aware numeric type checking.

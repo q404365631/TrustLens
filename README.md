@@ -5,8 +5,10 @@
 
 ### Your model has 92% accuracy. **That's not enough.**
 
-**The open-source Python library that answers the questions accuracy never does.**
-Calibration · Failure Analysis · Bias Detection · Representation Analysis — in one function call.
+**The open-source Python library that transforms model metrics into actionable deployment decisions.**
+TrustLens bridges the gap between model evaluation and deployment decision-making by evaluating reliability, robustness, and fairness in one function call.
+
+
 
 <br/>
 
@@ -15,6 +17,7 @@ Calibration · Failure Analysis · Bias Detection · Representation Analysis —
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/Khanz9664/TrustLens?style=social)](https://github.com/Khanz9664/TrustLens/stargazers)
 [![PyPI Downloads](https://img.shields.io/pypi/dm/trustlens)](https://pypi.org/project/trustlens)
+[![Code of Conduct](https://img.shields.io/badge/code%20of%20conduct-Contributor%20Covenant-blue.svg)](CODE_OF_CONDUCT.md)
 
 <br/>
 
@@ -24,56 +27,40 @@ Calibration · Failure Analysis · Bias Detection · Representation Analysis —
 
 <br/>
 
-[**Get Started**](#quickstart) · [**Live Demo**](examples/trustlens_demo.ipynb) · [**PyPI**](https://pypi.org/project/trustlens) · [**Discussions**](https://github.com/Khanz9664/TrustLens/discussions)
+[**Get Started**](#quickstart) · [**Docs**](docs/index.md) · [**Live Demo**](examples/trustlens_demo.ipynb) · [**PyPI**](https://pypi.org/project/trustlens) · [**Discussions**](https://github.com/Khanz9664/TrustLens/discussions)
 
 </div>
 
 ---
 
-## The Problem Nobody Ships Around
+## What TrustLens Does
+TrustLens is a **decision-support system** designed to answer the hardest question in ML: *"Should I deploy this model?"*
 
-You trained a model. It hits **92% accuracy** on your validation set. You ship it.
+Unlike standard metric libraries, TrustLens provides a cohesive diagnostic layer that evaluates:
+- **Reliability (Calibration)**: Are the model's probabilities trust-worthy?
+- **Robustness (Failure)**: Where and why does the model fail?
+- **Fairness (Bias)**: Are errors disproportionately affecting certain groups?
 
-Three months later:
+The results are synthesized into a **Trust Score** and an actionable **deployment verdict**, enabling practitioners to move from simple metric evaluation to informed deployment decisions.
 
-- A minority-class user gets consistently wrong predictions.
-- The model is **90% confident on its worst mistakes**.
-- A regulator asks *"why did it make that decision?"* — and you have no answer.
 
-Sound familiar? You're not alone.
-
-**Accuracy tells you how often your model is right.**
-**It tells you nothing about *when* it fails, *why* it fails, or *who* it fails.**
-
-TrustLens makes those failures visible — before they reach production.
-
----
-
-### 🎯 Who This Is For
-
-- **ML Engineers** building mission-critical production systems.
-- **Data Scientists** who need to justify model decisions to stakeholders.
-- **Researchers** benchmarking the reliability of new architectures.
-- **AI Teams** focused on safety, fairness, and regulatory compliance.
 
 ---
 
 ## One-Line Magic
-👉 **Full reliability analysis in one line.**
+**Full reliability analysis in one line.**
 
 ```python
 from trustlens import quick_analyze
-
-# Loads dataset, trains a baseline, and runs the full analysis.
 quick_analyze(dataset="breast_cancer").show()
 ```
 
-No setup. No boilerplate. Just insight.
-Output includes Trust Score, calibration curves, bias metrics, and failure analysis.
+> **Looking for the full documentation?**
+> Head over to the [**TrustLens Documentation Hub**](docs/index.md) for deep dives into features, use cases, and architecture.
 
 ---
 
-## 🚀 Quickstart
+## Quickstart
 
 ### 1. Install
 ```bash
@@ -84,100 +71,72 @@ pip install trustlens
 ```python
 from trustlens import analyze
 
-report = analyze(
-    model,          # any sklearn-compatible model (including XGBoost and LightGBM)
-    X_val,          # validation features
-    y_val,          # ground truth labels
-    y_prob=proba,   # predicted probabilities
-)
-
-print(report.trust_score)
+report = analyze(model, X_test, y_test, y_prob)
 report.show()
 ```
 
-### 3. Save & Log
+**Real Output Snippet:**
+```text
+TRUST SCORE: 88/100 [B]
+Assessment : High Trust - ready for controlled deployment
+
+Score Explanation:
+  - Dominant Issue  : Calibration (-12.0)
+  - Secondary Issue : Fairness (-0.0)
+```
+
+### 3. Compare Models
 ```python
-# Export to JSON (perfect for CI/CD pipelines and tracking)
-report.save("report.json")
+from trustlens import compare
 
-# Export to human-readable TXT for sharing
-report.save("report.txt")
+# Compare multiple candidates and get a recommendation
+compare([report_rf, report_logistic])
 ```
 
----
-
-## Example Dashboard
-Everything your team needs to see, in one presentation-ready view.
-
-![TrustLens Dashboard](assets/summary_plot.png)
+### 4. Save & Export
 
 ```python
-report.summary_plot()
+report.save("report.json") # For CI/CD
+report.save("report.txt")  # For humans
 ```
-
-This is what "model trust" actually looks like.
 
 ---
 
-## Features & Output
-TrustLens goes beyond pass/fail — it explains why your model should or shouldn't be trusted. It provides a deep dive into the four dimensions of model trust.
+## Understanding the Output
+TrustLens provides a multi-layered diagnostic report:
+- **Trust Score**: A weighted combination (configurable, default ~40/40/20) of Calibration, Failure, and Bias. Includes **automatic penalties** for critical risks.
+- **Failure Score**: Reflects **confidence-weighted errors**, not raw error rate. It identifies if errors are concentrated in high-certainty zones.
+- **Calibration**: Measures probability reliability via Expected Calibration Error (ECE).
+- **Fairness Margin**: Quantifies distance from the acceptable disparity threshold (0.10).
+- **Pattern Detection**: Alerts you to behaviors like **Calibration Drift** (unreliable probabilities) or **Confidently Wrong** (high-certainty mistakes).
 
-### The Trust Score
-A single, actionable number: **0 to 100.** Computed from four independently interpretable dimensions:
 
-| Dimension | What it measures | Weight |
-|---|---|---|
-| **Calibration** | Do probabilities reflect reality? | 35% |
-| **Failure** | Does confidence correlate with accuracy? | 30% |
-| **Bias** | Are all groups treated equally? | 25% |
-| **Representation** | Is the embedding space well-structured? | 10% |
-
-Weights are empirically chosen and will be configurable in future releases.
-
-### Find Your Most Dangerous Mistakes
-```python
-report.show_failures(top_k=5)
-```
-Surfaces high-confidence misclassifications — the "silent killers" of production ML. TrustLens identifies where the model is certain it's right, but is actually wrong.
 
 ---
 
-## Real-World Use Cases
+## Documentation
 
-**Medical AI**
-Identify overconfidence in edge cases before a diagnostic model reaches a patient. TrustLens flags high ECE (>0.15) early.
+Detailed guides and architecture references are available in our [structured documentation](docs/index.md):
 
-**Fraud Detection**
-Quantify your false-negative problem. If your confidence gap is low, your model is equally confident on the fraud it catches and the fraud it misses.
+### Core Concepts
+* [**The Problem**](docs/problem.md) — Why accuracy is a dangerous metric for production.
+* [**Who This Is For**](docs/audience.md) — Targeted guidance for MLEs, Data Scientists, and Researchers.
 
-**Hiring & Lending**
-Automated subgroup analysis reveals performance gaps across demographics before they become regulatory liabilities.
+### Deep Dive
+* [**Features & Modules**](docs/features.md) — Deep dive into Calibration, Failure, Bias, and Representation.
+* [**Real-World Use Cases**](docs/use_cases.md) — Medical AI, Fraud Detection, and Hiring.
+* [**Architecture**](docs/architecture.md) — Modular design and internal logic.
 
-**Enterprise MLOps**
-Connect to MLflow or W&B to track Trust Score decay across training runs and automated deployments.
+### Development
+* [**Contributing**](CONTRIBUTING.md) — How to set up your dev environment.
+* [**Code of Conduct**](CODE_OF_CONDUCT.md) — Our community standards.
+* [**Roadmap**](ROADMAP.md) — Future features and project vision.
 
----
-
-## 🏗 Architecture
-
-TrustLens is built as a modular, extensible framework:
-
-```
-trustlens/
-├── metrics/           # Brier, ECE, Confidence Gap, Subgroup Bias
-├── visualization/     # Dashboarding, Reliability Curves, Embedding Plots
-├── explainability/    # [Experimental] Grad-CAM, Faithfulness tests (requires PyTorch)
-├── plugins/           # Extensible plugin system for custom metrics
-├── api.py             # zero-friction entry points
-├── report.py          # Serialisation and human-readable exports
-└── trust_score.py     # Weighted trust consensus
-```
-
-> Modules marked `[Experimental]` are functional but not part of the core pipeline. See [`docs/EXPERIMENTAL.md`](docs/EXPERIMENTAL.md) for details.
+<!-- Maintainers: Consider updating GitHub repository description to: "Debug your ML models beyond accuracy | Structured docs in /docs" -->
 
 ---
 
-## 🌟 Contributors
+## Contributors
 
 <table>
   <tr>
@@ -209,39 +168,27 @@ trustlens/
         <sub><b>CrepuscularIRIS</b></sub>
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/komoike-oss28-ui">
+        <img src="https://github.com/komoike-oss28-ui.png" width="100px;" style="border-radius:50%;"/>
+        <br />
+        <sub><b>komoike-oss28-ui</b></sub>
+      </a>
+    </td>
   </tr>
 </table>
 
 Want to see your name here? Check out `good first issue` 👇
 
+https://github.com/Khanz9664/TrustLens/issues
+
 ---
 
-## 🛠 Contributing
+## Contributing
 
-TrustLens is a production-grade tool, and our community is already exploring and contributing new features. We welcome developers of all levels!
-
-### 🟢 Beginner
-- Issues #1, #7, #13: Implementing core metrics.
-- Issues #4, #5: Testing and documentation improvements.
-
-### 🟡 Intermediate
-- Issue #19: HTML Report generation.
-- Issue #35: Weights & Biases (W&B) integration.
-- Issue #51: `trustlens analyze` CLI support.
-
-**Comment on an issue and I will guide you!** I am committed to making this a welcoming home for first-time open-source contributors. 🚀
+TrustLens is a production-grade tool, and we welcome developers of all levels. Whether it's fixing a bug, adding a metric, or improving our documentation, your help is appreciated.
 
 [**Read the full Contributing Guide →**](CONTRIBUTING.md)
-
----
-
-## 🛣 Roadmap Teaser
-We are actively building features that make TrustLens the standard for model reliability:
--  **CLI Support**: `trustlens analyze --dataset iris`
--  **Integration**: First-class support for **MLflow** and **W&B**.
--  **Fairness**: Implementation of Equalized Odds and Demographic Parity.
-
-Check the [**Full Roadmap**](ROADMAP.md) for more details.
 
 ---
 
@@ -261,6 +208,7 @@ If you use TrustLens in research or production, please cite it:
 ---
 
 ## Author
+
 **Shahid Ul Islam** — ML Engineer & Creator of TrustLens
 [GitHub](https://github.com/Khanz9664) · [Portfolio](https://khanz9664.github.io/portfolio/) · [LinkedIn](https://www.linkedin.com/in/shahid-ul-islam-13650998/)
 
